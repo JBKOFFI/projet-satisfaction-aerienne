@@ -1,64 +1,65 @@
-README
-----CONTEXTE
-Cet ensemble de données contient une enquête de satisfaction des passagers d'une compagnie aérienne. Quels facteurs sont fortement corrélés à la satisfaction (ou à l'insatisfaction) d'un passager ? Peut-on prédire la satisfaction d'un passager ?
+<div align="center">
 
-----DATA
-Numero : Numéro de la ligne
+# Prédiction de la Satisfaction des Passagers Aériens
 
-Sexe : Sexe des passagers (Femme, Homme)
+<img src="https://img.icons8.com/clouds/200/airplane-take-off.png" alt="Avion" width="150"/>
 
-Type de client : Type de client (fidèle, infidèle)
+### Projet Master 1 Data Science – UFHB 2025-2026
 
-Âge : âge réel des passagers
+**KOFFI KOUAME Jean Baptiste**  
+**KOUASSI KOUADIO Prosper**
 
-Type de voyage : motif du vol (voyage personnel, voyage d'affaires)
+**Random Forest – Accuracy 96.35 %** • **Seuil optimal : 0.5773**
 
-Classe : classe de voyage dans l'avion (Affaires, Éco, Éco Plus)
+[![Python](https://img.shields.io/badge/Python-3.11-blue)](https://www.python.org)
+[![Pandas](https://img.shields.io/badge/Pandas-2.0-2965C5)](https://pandas.pydata.org)
+[![Scikit--Learn](https://img.shields.io/badge/Scikit_Learn-1.5-F7931E)](https://scikit-learn.org)
+[![Status](https://img.shields.io/badge/Statut-Terminé-brightgreen?style=for-the-badge)](https://github.com/JBKOFFI/projet-satisfaction-aerienne)
 
-Distance de vol : distance du vol
+</div>
 
-Wi-Fi à bord : niveau de satisfaction concernant le service Wi-Fi à bord (0 : non applicable ; 1-5)
+## Contexte & Objectif du projet
 
-Heure de départ/d'arrivée : niveau de satisfaction concernant l'heure de départ/d'arrivée
+Cet ensemble de données provient d’une enquête de satisfaction auprès des passagers d’une compagnie aérienne.
 
-Facilité de réservation en ligne : Niveau de satisfaction concernant la réservation en ligne
+**Question métier** :  
+Quels facteurs influencent le plus la satisfaction des passagers ?  
+**Objectif technique** :  
+Construire le **meilleur modèle de scoring** capable de prédire si un passager sera **Satisfait** ou **Insatisfait/Neutre**, avec un seuil de décision optimisé.
 
-Emplacement de la porte d'embarquement : Niveau de satisfaction concernant l'emplacement de la porte d'embarquement
+## Description des données (24 variables)
 
-Restauration : Niveau de satisfaction concernant la restauration
+| Catégorie               | Variables principales |
+|-------------------------|-----------------------|
+| Profil passager         | Sexe, Âge, Type de client (fidèle/infidéle) |
+| Voyage                  | Type de voyage, Classe (Eco, Eco Plus, Business), Distance |
+| Services notés (0–5)    | Wi-Fi, Restauration, Confort siège, Divertissement, Propreté, Service en vol… |
+| Ponctualité             | Retard départ, Retard arrivée (en minutes) |
+| Variable cible          | **Satisfaction** → `Satisfied` / `Neutral or Dissatisfied` (regroupé en **Insatisfait**) |
 
-Embarquement en ligne : Niveau de satisfaction concernant l'embarquement en ligne
+Dataset : ~130 000 passagers
 
-Confort des sièges : Niveau de satisfaction concernant le confort des sièges
+## Travail réalisé
 
-Divertissements à bord : Niveau de satisfaction concernant les divertissements à bord
+| Étape                        | Réalisé |
+|-----------------------------|----------|
+| Chargement & nettoyage      | Oui (feuille "Data" du fichier Excel) |
+| Analyse exploratoire (EDA)  | Oui (graphiques + corrélations) |
+| Feature engineering         | Oui (gestion des valeurs manquantes, encodage) |
+| Modélisation                | Oui (Logistic Regression, Random Forest, XGBoost, LightGBM) |
+| Optimisation du seuil       | Oui (Youden’s J → seuil = **0.5773**) |
+| Interprétation métier       | Oui |
 
-Service à bord : Niveau de satisfaction concernant le service à bord
+## Résultats du modèle retenu – Random Forest
 
-Espace pour les jambes : Niveau de satisfaction concernant l'espace pour les jambes
+| Métrique                     | Score          |
+|------------------------------|----------------|
+| Accuracy (test)              | **96.35 %**    |
+| Accuracy globale             | 96.27 %        |
+| AUC-ROC                      | 0.994          |
+| Nombre d’erreurs (test)      | 999 / ~33 500  |
+| Seuil de décision optimal    | **0.5773**     |
 
-Traitement des bagages : Niveau de satisfaction concernant le traitement des bagages
+→ Le modèle prédit correctement **96.65 %** des cas avec un seuil ajusté
 
-Service d'enregistrement : Niveau de satisfaction du service d'enregistrement
-
-Service en vol : Niveau de satisfaction du service en vol
-
-Propreté : Niveau de satisfaction de la propreté
-
-Retard au départ (minutes) : Minutes de retard au départ
-
-Retard à l'arrivée (minutes) : Minutes de retard à l'arrivée
-
-Satisfaction : Niveau de satisfaction de la compagnie aérienne (Satisfaction, neutre ou insatisfaction) 
-
-
------ TRAVAIL A FAIRE 
-  1. Charger les données des la feuille Data du fichier excell joint 
-  2. Mener des analyses exploratoire pour comprendre les données, vous prendrez le soins de faire les formattages  et correction les anomalies éventuelle dans les données ( gestion des Données manquante)
-  3. Construisez le meilleurs modèle de scoring pour scorer la satisfaction clientelle. La variable cible à considérez est 'Satisfaction' avec ses 2 modalités.
-  4. Definssez le seuil de decision de votre scoring. (Je rappelle que le seuil par défaut est de 0,5 pour un scoring de probalité)
-
-NB :
- 1. L'organisation de votre noteBook, la structure des codes/Fonction, les graphique d'illustration et les choix justifiés de vos méthodes ou approches seront notés 
- 2. Vous travaillerez par Groupe de 2 personnes. Le noteBook portera le nom entier des membre du groupe 
- 3. Vous avez un délai d'une semaine pour rendre par mail vos travaux à compter de ce jour 6/7/2026. Date limite de dépot des travaux : 14/06/2025
+## Contenu du repository
