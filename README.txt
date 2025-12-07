@@ -1,65 +1,52 @@
 <div align="center">
-
-# Prédiction de la Satisfaction des Passagers Aériens
-
-<img src="https://img.icons8.com/clouds/200/airplane-take-off.png" alt="Avion" width="150"/>
-
-### Projet Master 1 Data Science – UFHB 2025-2026
-
-**KOFFI KOUAME Jean Baptiste**  
-**KOUASSI KOUADIO Prosper**
-
-**Random Forest – Accuracy 96.35 %** • **Seuil optimal : 0.5773**
-
-[![Python](https://img.shields.io/badge/Python-3.11-blue)](https://www.python.org)
-[![Pandas](https://img.shields.io/badge/Pandas-2.0-2965C5)](https://pandas.pydata.org)
-[![Scikit--Learn](https://img.shields.io/badge/Scikit_Learn-1.5-F7931E)](https://scikit-learn.org)
-[![Status](https://img.shields.io/badge/Statut-Terminé-brightgreen?style=for-the-badge)](https://github.com/JBKOFFI/projet-satisfaction-aerienne)
-
+  <h1>Prédiction de la Satisfaction des Passagers Aériens</h1>
+  <p><strong>KOFFI KOUAME JEAN BAPTISTE – KOUASSI KOUADIO PROSPER</strong><br>
+  Master 1 Data Science – UFHB</p>
 </div>
 
-## Contexte & Objectif du projet
+## CONTEXTE
+Cet ensemble de données contient une enquête de satisfaction des passagers d'une compagnie aérienne.  
+Quels facteurs sont fortement corrélés à la satisfaction (ou à l'insatisfaction) d'un passager ?  
+Peut-on prédire la satisfaction d'un passager ?
 
-Cet ensemble de données provient d’une enquête de satisfaction auprès des passagers d’une compagnie aérienne.
+## DATA
+- Numéro : Numéro de la ligne  
+- Sexe : Sexe des passagers (Femme, Homme)  
+- Type de client : Type de client (fidèle, infidèle)  
+- Âge : âge réel des passagers  
+- Type de voyage : motif du vol (voyage personnel, voyage d'affaires)  
+- Classe : classe de voyage dans l'avion (Affaires, Éco, Éco Plus)  
+- Distance de vol : distance du vol  
+- Wi-Fi à bord : niveau de satisfaction concernant le service Wi-Fi à bord (0 : non applicable ; 1-5)  
+- Heure de départ/d'arrivée : niveau de satisfaction concernant l'heure de départ/d'arrivée  
+- Facilité de réservation en ligne : Niveau de satisfaction concernant la réservation en ligne  
+- Emplacement de la porte d'embarquement : Niveau de satisfaction concernant l'emplacement de la porte d'embarquement  
+- Restauration : Niveau de satisfaction concernant la restauration  
+- Embarquement en ligne : Niveau de satisfaction concernant l'embarquement en ligne  
+- Confort des sièges : Niveau de satisfaction concernant le confort des sièges  
+- Divertissements à bord : Niveau de satisfaction concernant les divertissements à bord  
+- Service à bord : Niveau de satisfaction concernant le service à bord  
+- Espace pour les jambes : Niveau de satisfaction concernant l'espace pour les jambes  
+- Traitement des bagages : Niveau de satisfaction concernant le traitement des bagages  
+- Service d'enregistrement : Niveau de satisfaction du service d'enregistrement  
+- Service en vol : Niveau de satisfaction du service en vol  
+- Propreté : Niveau de satisfaction de la propreté  
+- Retard au départ (minutes) : Minutes de retard au départ  
+- Retard à l'arrivée (minutes) : Minutes de retard à l'arrivée  
+- Satisfaction : Niveau de satisfaction de la compagnie aérienne (Satisfaction, neutre ou insatisfaction)
 
-**Question métier** :  
-Quels facteurs influencent le plus la satisfaction des passagers ?  
-**Objectif technique** :  
-Construire le **meilleur modèle de scoring** capable de prédire si un passager sera **Satisfait** ou **Insatisfait/Neutre**, avec un seuil de décision optimisé.
+## TRAVAIL À FAIRE
+1. Charger les données de la feuille **Data** du fichier Excel joint  
+2. Mener des analyses exploratoires pour comprendre les données, vous prendrez le soin de faire les formattages et corriger les anomalies éventuelles dans les données (gestion des données manquantes)  
+3. Construisez le meilleur modèle de scoring pour scorer la satisfaction clientèle. La variable cible à considérer est **Satisfaction** avec ses 2 modalités.  
+4. Définissez le seuil de décision de votre scoring. (Je rappelle que le seuil par défaut est de 0,5 pour un scoring de probabilité)
 
-## Description des données (24 variables)
+### NB :
+1. L’organisation de votre notebook, la structure des codes/fonctions, les graphiques d’illustration et les choix justifiés de vos méthodes ou approches seront notés  
+2. Vous travaillerez par groupe de 2 personnes. Le notebook portera le nom entier des membres du groupe  
+3. Vous avez un délai d'une semaine pour rendre par mail vos travaux à compter de ce jour 6/7/2026.  
+**Date limite de dépôt des travaux : 14/06/2025**
 
-| Catégorie               | Variables principales |
-|-------------------------|-----------------------|
-| Profil passager         | Sexe, Âge, Type de client (fidèle/infidéle) |
-| Voyage                  | Type de voyage, Classe (Eco, Eco Plus, Business), Distance |
-| Services notés (0–5)    | Wi-Fi, Restauration, Confort siège, Divertissement, Propreté, Service en vol… |
-| Ponctualité             | Retard départ, Retard arrivée (en minutes) |
-| Variable cible          | **Satisfaction** → `Satisfied` / `Neutral or Dissatisfied` (regroupé en **Insatisfait**) |
-
-Dataset : ~130 000 passagers
-
-## Travail réalisé
-
-| Étape                        | Réalisé |
-|-----------------------------|----------|
-| Chargement & nettoyage      | Oui (feuille "Data" du fichier Excel) |
-| Analyse exploratoire (EDA)  | Oui (graphiques + corrélations) |
-| Feature engineering         | Oui (gestion des valeurs manquantes, encodage) |
-| Modélisation                | Oui (Logistic Regression, Random Forest, XGBoost, LightGBM) |
-| Optimisation du seuil       | Oui (Youden’s J → seuil = **0.5773**) |
-| Interprétation métier       | Oui |
-
-## Résultats du modèle retenu – Random Forest
-
-| Métrique                     | Score          |
-|------------------------------|----------------|
-| Accuracy (test)              | **96.35 %**    |
-| Accuracy globale             | 96.27 %        |
-| AUC-ROC                      | 0.994          |
-| Nombre d’erreurs (test)      | 999 / ~33 500  |
-| Seuil de décision optimal    | **0.5773**     |
-
-→ Le modèle prédit correctement **96.65 %** des cas avec un seuil ajusté
-
-## Contenu du repository
+<div align="center">
+  <strong>Projet rendu dans les délais – Tout est là</strong>
+</div>
